@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 700" width="1080" height="700" role="img" aria-label="Block diagram of the registered ALU. Operands feed an add/sub unit, a logic unit and a shift/rotate unit. A result mux selected by opcode produces y_next, and flag logic produces c_next, z_next, n_next and v_next. These load into the y register and flag registers when in_valid is high. out_valid is in_valid delayed one cycle. The current y feeds back to the mux so CMP can hold it."><style>
+.w{stroke:#1d2430;stroke-width:1.4;fill:none}.fb{stroke:#c2410c;stroke-width:1.6;fill:none}.dot{fill:#1d2430}
+.rg{fill:none;stroke:#667085;stroke-width:1;stroke-dasharray:5 4}.bc{fill:#e8f0fb;stroke:#1d2430;stroke-width:1.2}
+.bs{fill:#fbf1e3;stroke:#1d2430;stroke-width:1.2}
+.t{font:600 13px Helvetica,Arial,sans-serif;fill:#1d2430}.s{font:400 11px Helvetica,Arial,sans-serif;fill:#667085}
+.m{font:400 11px Menlo,Consolas,monospace;fill:#1d2430}.ms{font:400 10.5px Menlo,Consolas,monospace;fill:#667085}
+.rl{font:600 10.5px Helvetica,Arial,sans-serif;fill:#667085;letter-spacing:.08em}.fa{font:500 11px Menlo,Consolas,monospace;fill:#c2410c}
+.ah{fill:#1d2430}.aha{fill:#c2410c}</style>
+<rect x="0" y="0" width="1080" height="700" fill="#ffffff"/>
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="ah"/></marker>
+          <marker id="arA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="aha"/></marker>
+        </defs>
+
+        
+        <rect class="rg" x="190" y="40" width="510" height="505" rx="4"/>
+        <text class="rl" x="202" y="57">COMBINATIONAL <tspan class="ms" letter-spacing="0">always_comb</tspan></text>
+        <rect class="rg" x="740" y="40" width="180" height="640" rx="4"/>
+        <text class="rl" x="752" y="57">SEQUENTIAL <tspan class="ms" letter-spacing="0">always_ff</tspan></text>
+
+        
+        <text class="m" x="100" y="84" text-anchor="end">opnd_a[7:0]</text>
+        <text class="m" x="100" y="104" text-anchor="end">opnd_b[7:0]</text>
+        <text class="m" x="100" y="124" text-anchor="end">cin</text>
+        <text class="m" x="100" y="404" text-anchor="end">opcode[3:0]</text>
+        <text class="m" x="100" y="584" text-anchor="end">in_valid</text>
+        <text class="m" x="100" y="634" text-anchor="end">clk</text>
+        <text class="m" x="100" y="659" text-anchor="end">rst_n</text>
+
+        
+        <polyline class="w" points="106,80 210,80 210,300 270,300" marker-end="url(#ar)"/>
+        <line class="w" x1="210" y1="95" x2="270" y2="95" marker-end="url(#ar)"/>
+        <line class="w" x1="210" y1="215" x2="270" y2="215" marker-end="url(#ar)"/>
+        <circle class="dot" cx="210" cy="95" r="2.6"/>
+        <circle class="dot" cx="210" cy="215" r="2.6"/>
+        
+        <polyline class="w" points="106,100 225,100 225,335 270,335" marker-end="url(#ar)"/>
+        <line class="w" x1="225" y1="115" x2="270" y2="115" marker-end="url(#ar)"/>
+        <line class="w" x1="225" y1="235" x2="270" y2="235" marker-end="url(#ar)"/>
+        <circle class="dot" cx="225" cy="115" r="2.6"/>
+        <circle class="dot" cx="225" cy="235" r="2.6"/>
+        
+        <polyline class="w" points="106,120 240,120 240,145 270,145" marker-end="url(#ar)"/>
+
+        
+        <rect class="bc" x="270" y="70" width="150" height="100" rx="3"/>
+        <text class="t" x="345" y="99" text-anchor="middle">Add / Sub unit</text>
+        <text class="ms" x="345" y="116" text-anchor="middle">width+1 bits</text>
+        <text class="s" x="345" y="136" text-anchor="middle">ADD ADC SUB SBB</text>
+        <text class="s" x="345" y="152" text-anchor="middle">INC DEC CMP</text>
+
+        
+        <rect class="bc" x="270" y="195" width="150" height="60" rx="3"/>
+        <text class="t" x="345" y="221" text-anchor="middle">Logic unit</text>
+        <text class="s" x="345" y="240" text-anchor="middle">AND OR XOR NOT</text>
+
+        
+        <rect class="bc" x="270" y="280" width="150" height="80" rx="3"/>
+        <text class="t" x="345" y="303" text-anchor="middle">Shift / rotate</text>
+        <text class="s" x="345" y="321" text-anchor="middle">SHL SHR SAR ROL ROR</text>
+        <text class="ms" x="345" y="348" text-anchor="middle" style="font-size:9.5px">shift_amt=opnd_b[2:0]</text>
+
+        
+        <line class="w" x1="420" y1="130" x2="525" y2="130" marker-end="url(#ar)"/>
+        <text class="m" x="472" y="124" text-anchor="middle">sum[7:0]</text>
+        <line class="w" x1="420" y1="225" x2="525" y2="225" marker-end="url(#ar)"/>
+        <text class="m" x="472" y="219" text-anchor="middle">logic_res</text>
+        <line class="w" x1="420" y1="310" x2="525" y2="310" marker-end="url(#ar)"/>
+        <text class="m" x="472" y="304" text-anchor="middle">shift_res</text>
+        <line class="w" x1="420" y1="345" x2="450" y2="345" marker-end="url(#ar)"/>
+        <text class="m" x="455" y="349">shift_c</text>
+
+        
+        <polygon class="bc" points="525,60 585,90 585,340 525,370"/>
+        <text class="t" x="555" y="203" text-anchor="middle">Result</text>
+        <text class="t" x="555" y="220" text-anchor="middle">MUX</text>
+
+        
+        <polyline class="w" points="106,400 600,400 600,425" marker-end="url(#ar)"/>
+        <line class="w" x1="555" y1="400" x2="555" y2="356" marker-end="url(#ar)"/>
+        <circle class="dot" cx="555" cy="400" r="2.6"/>
+        <text class="ms" x="562" y="380">sel</text>
+
+        
+        <line class="w" x1="585" y1="215" x2="770" y2="215" marker-end="url(#ar)"/>
+        <text class="m" x="642" y="209" text-anchor="middle">next_y[7:0]</text>
+
+        
+        <rect class="bc" x="440" y="425" width="230" height="110" rx="3"/>
+        <text class="t" x="555" y="453" text-anchor="middle">Flag logic</text>
+        <text class="s" x="555" y="472" text-anchor="middle">C, V by op class</text>
+        <text class="s" x="555" y="490" text-anchor="middle">Z, N from flag_src</text>
+        <text class="ms" x="555" y="512" text-anchor="middle">flag_src = next_y, or a−b for CMP</text>
+
+        
+        <line class="w" x1="388" y1="445" x2="440" y2="445" marker-end="url(#ar)"/>
+        <text class="m" x="383" y="449" text-anchor="end">sum[8:0]</text>
+        <line class="w" x1="388" y1="465" x2="440" y2="465" marker-end="url(#ar)"/>
+        <text class="m" x="383" y="469" text-anchor="end">opnd_a[7], opnd_b[7]</text>
+        <line class="w" x1="388" y1="485" x2="440" y2="485" marker-end="url(#ar)"/>
+        <text class="m" x="383" y="489" text-anchor="end">shift_c</text>
+        <line class="w" x1="388" y1="505" x2="440" y2="505" marker-end="url(#ar)"/>
+        <text class="m" x="383" y="509" text-anchor="end">next_y</text>
+
+        
+        <line class="w" x1="670" y1="445" x2="770" y2="445" marker-end="url(#ar)"/>
+        <text class="m" x="720" y="440" text-anchor="middle">next_c</text>
+        <line class="w" x1="670" y1="465" x2="770" y2="465" marker-end="url(#ar)"/>
+        <text class="m" x="720" y="460" text-anchor="middle">next_z</text>
+        <line class="w" x1="670" y1="485" x2="770" y2="485" marker-end="url(#ar)"/>
+        <text class="m" x="720" y="480" text-anchor="middle">next_s</text>
+        <line class="w" x1="670" y1="505" x2="770" y2="505" marker-end="url(#ar)"/>
+        <text class="m" x="720" y="500" text-anchor="middle">next_ov</text>
+
+        
+        <line class="w" x1="106" y1="580" x2="770" y2="580" marker-end="url(#ar)"/>
+        <polyline class="w" points="752,580 752,240 770,240" marker-end="url(#ar)"/>
+        <line class="w" x1="752" y1="525" x2="770" y2="525" marker-end="url(#ar)"/>
+        <circle class="dot" cx="752" cy="580" r="2.6"/>
+        <circle class="dot" cx="752" cy="525" r="2.6"/>
+
+        
+        <rect class="bs" x="770" y="180" width="130" height="70" rx="3"/>
+        <text class="t" x="835" y="206" text-anchor="middle">y register</text>
+        <text class="ms" x="835" y="224" text-anchor="middle">[7:0]</text>
+        <text class="s" x="835" y="240" text-anchor="middle">en = in_valid</text>
+        <polygon class="ah" points="829,250 835,243 841,250"/>
+
+        
+        <rect class="bs" x="770" y="425" width="130" height="110" rx="3"/>
+        <text class="t" x="835" y="462" text-anchor="middle">Flag registers</text>
+        <text class="m" x="835" y="481" text-anchor="middle">C  Z  N  V</text>
+        <text class="s" x="835" y="500" text-anchor="middle">en = in_valid</text>
+        <polygon class="ah" points="829,535 835,528 841,535"/>
+
+        
+        <rect class="bs" x="770" y="555" width="130" height="50" rx="3"/>
+        <text class="t" x="835" y="577" text-anchor="middle">out_valid reg</text>
+        <text class="s" x="835" y="593" text-anchor="middle">D = in_valid</text>
+        <polygon class="ah" points="829,605 835,598 841,605"/>
+
+        
+        <line class="w" x1="106" y1="630" x2="752" y2="630" marker-end="url(#ar)"/>
+        <text class="s" x="758" y="634">posedge, all regs</text>
+        <line class="w" x1="106" y1="655" x2="752" y2="655" marker-end="url(#ar)"/>
+        <text class="s" x="758" y="659">async clear, all regs</text>
+
+        
+        <line class="w" x1="900" y1="215" x2="960" y2="215" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="219">y[7:0]</text>
+        <line class="w" x1="900" y1="445" x2="960" y2="445" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="449">carry_flag</text>
+        <line class="w" x1="900" y1="465" x2="960" y2="465" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="469">zero_flag</text>
+        <line class="w" x1="900" y1="485" x2="960" y2="485" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="489">sign_flag</text>
+        <line class="w" x1="900" y1="505" x2="960" y2="505" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="509">overflow_flag</text>
+        <line class="w" x1="900" y1="580" x2="960" y2="580" marker-end="url(#ar)"/>
+        <text class="m" x="966" y="584">out_valid</text>
+
+        
+        <polyline class="fb" points="930,215 930,25 505,25 505,85 525,85" marker-end="url(#arA)"/>
+        <circle class="dot" cx="930" cy="215" r="2.6"/>
+        <text class="fa" x="717" y="19" text-anchor="middle">y (held value, selected for CMP)</text>
+      </svg>
